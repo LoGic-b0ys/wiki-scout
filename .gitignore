@@ -102,3 +102,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# dataset
+titles.txt
+index.html
+article.db
