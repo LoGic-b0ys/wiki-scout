@@ -5,12 +5,13 @@ from TagDropper import TagDropper
 
 class Article:
 
-	def __init__(self, title, body):
+	def __init__(self, title, body, file_name = '', table_name=''):
 		self.title = title
 		self.body = body
 		self.keyword = []
+		self.table_name = table_name
 
-		self.db = Database('article.db')
+		self.conn = Database(file_name)
 
 	def extract_keyword(self):
 		clean = self.get_clean_body()
@@ -47,3 +48,16 @@ class Article:
 		td.feed(self.body)
 
 		self.body = td.get_text()
+
+	'''
+		For Database
+	'''
+	def save_article(self):
+		self.save(['title', 'raw_article'], (self.title, self.body))
+		self.commit()
+
+	def save(self, column, data):
+		self.conn.insert(self.table_name, column, data)
+
+	def commit(self):
+		self.conn.commit()

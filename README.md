@@ -27,6 +27,8 @@ To clone and run this application, you'll need [Git](https://git-scm.com) instal
 $ pip install nltk
 $ pip install rake-nltk
 $ pip install selenium
+$ pip install flask
+$ pip install flask-bootstrap
 
 # Clone the repository
 $ git clone https://github.com/LoGic-b0ys/wiki-scout.git
@@ -35,7 +37,12 @@ $ git clone https://github.com/LoGic-b0ys/wiki-scout.git
 $ cd wiki-scout
 
 # Execute it
-$ python main.py
+$ python crawl.py
+
+# Enter the url and press enter
+# Wait because it's so long
+
+# Voila... Your article is saved to the database
 ```
 
 ## Future Development
