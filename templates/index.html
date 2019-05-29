@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block isi %}
+	<h1 class="text-center">Offline Article List</h1>
+	<div class="article-list">
+		{% for title in data_title %}
+			<a href="{{ url_for('article', article_id=title[0]) }}"><h4>{{ title[1] }}</h4></a>
+		{% endfor %}
+	</div>
+{% endblock %}
