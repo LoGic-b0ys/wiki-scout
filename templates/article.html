@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block isi %}
+	<h1 class="text-center">{{ article[0][0] }}</h1>
+	<div class="article">
+		{{ article[0][1]|safe }}
+	</div>
+{% endblock %}
