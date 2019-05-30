@@ -53,6 +53,17 @@ class Crawler:
 
 		# print('Process complete')
 
+	def get_feed(self):
+		self.browser.get(self.url)
+
+		titles = self.browser.find_elements_by_css_selector(".entry-title > a")
+
+		res = {}
+		for x in titles :
+			res[x.text] = x.get_attribute('href')
+
+		return res
+
 
 	'''
 		This method provide an content and title

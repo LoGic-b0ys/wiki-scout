@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{{super()}}Farnam Street Feed Article
+{% endblock %}
+
+{% block isi %}
+	<h1 class="text-center">Article from Farnam Street</h1>
+	<div class="article-list">
+		{% for title in titles.keys() %}
+			{% if title_status[title] is number %}
+				<a href="{{ url_for('article', article_id=title_status[title]) }}"><h4>{{ title }}<span class="badge"><i class="fa fa-book"></i></span></h4></a>
+			{% else %}
+				<a href="{{ url_for('url', farnam=title_status[title]) }}"><h4>{{ title }}</h4></a>
+			{% endif %}
+		{% endfor %}
+		{% if page > 1 %}
+			<a href="{{ url_for('feed', page=page-1) }}" class="btn btn-primary btn-sm pull-left">Previous Page</a>
+		{% endif %}
+		<a href="{{ url_for('feed', page=page+1) }}" class="btn btn-primary btn-sm pull-right">Next Page</a>
+	</div>
+{% endblock %}

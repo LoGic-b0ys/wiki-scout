@@ -40,6 +40,9 @@ class Article:
 	def get_keyword(self):
 		return self.keyword
 
+	def get_title(self):
+		return self.title
+		
 	def get_content(self):
 		return self.body
 
