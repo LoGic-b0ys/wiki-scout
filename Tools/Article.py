@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from rake_nltk import Rake
-from Database import Database
-from TagDropper import TagDropper
+from Core.Database import Database
+from Tools.TagDropper import TagDropper
 
 class Article:
 
