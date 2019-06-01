@@ -2,9 +2,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-# This is our library
-from Database import Database
-
 
 '''
 	This class provide interface to the crawler with selenium and chromedriver
@@ -19,13 +16,7 @@ class Crawler:
 		file_name is a string that indicates where you want to put your crawl result in a database.
 		url is a string where is your review
 	'''
-	def __init__(self, file_name = '', table_name='') :
-
-		if file_name != '':
-			self.conn = Database(file_name)  # This is our database interface
-		else :
-			self.conn = None
-
+	def __init__(self) :
 		# We use chrome web driver
 		webdriver_path = './chromedriver'
 
@@ -36,8 +27,6 @@ class Crawler:
 		self.browser = webdriver.Chrome(executable_path=webdriver_path, options=chrome_options)
 		self.title = ''
 		self.body = ''
-
-		self.table_name = table_name
 		self.url = ''
 
 	'''
@@ -64,8 +53,20 @@ class Crawler:
 
 		# print('Process complete')
 
-		self.save(['title', 'raw_article'], (self.title, self.body))
-		# self.commit()
+
+	'''
+		Ini adalah class untuk mengambil feed dari farnam street
+	'''
+	def get_feed(self):
+		self.browser.get(self.url)
+
+		titles = self.browser.find_elements_by_css_selector(".entry-title > a")
+
+		res = {}
+		for x in titles :
+			res[x.text] = x.get_attribute('href')
+
+		return res
 
 
 	'''
@@ -77,17 +78,5 @@ class Crawler:
 	def get_title(self):
 		return self.title
 
-	'''
-		For Database
-	'''
-	def save(self, column, data):
-		self.conn.insert(self.table_name, column, data)
-
-	def commit(self):
-		self.conn.commit()
-
 	def close(self):
-
-		if self.conn != None :
-			self.conn.close()
 		self.browser.close()
