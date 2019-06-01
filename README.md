@@ -18,6 +18,8 @@
 * Simple algorithm, you can tweak it easily
 * Integrated with wikipedia huge database
 
+![](https://i.ibb.co/Z85x8ns/Screenshot-2019-06-01-13-24-21.png)
+
 ## How to Use
 
 To clone and run this application, you'll need [Git](https://git-scm.com) installed on your computer and of course a pip. From your command line:
@@ -32,24 +34,24 @@ $ pip install flask-bootstrap
 
 # Clone the repository
 $ git clone https://github.com/LoGic-b0ys/wiki-scout.git
+```
+* After that you need to get the [wikipedia title database](https://www.kaggle.com/residentmario/wikipedia-article-titles) to refer the keyword from wikipedia article.
+* Move to the repository folder and extract the file
+* After that open the terminal again
 
+```bash
 # Go into the repository
 $ cd wiki-scout
 
-# Execute it
-$ python crawl.py
-
-# Enter the url and press enter
-# Wait because it's so long
-
-# Voila... Your article is saved to the database
+# Execute the server
+$ python main.py
 ```
+* You can access your article with the default Flask URL and port at http://localhost:5000
+
 
 ## Future Development
 
-* Web integration
-* Offline support
-* Feed article
+* Still brainstorming
 
 ## Contribution
 

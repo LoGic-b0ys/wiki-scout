@@ -53,6 +53,10 @@ class Crawler:
 
 		# print('Process complete')
 
+
+	'''
+		Ini adalah class untuk mengambil feed dari farnam street
+	'''
 	def get_feed(self):
 		self.browser.get(self.url)
 

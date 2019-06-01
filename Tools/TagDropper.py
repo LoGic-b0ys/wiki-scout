@@ -1,10 +1,12 @@
+# Source code from stackoverflow
+
 from html.parser import HTMLParser
 
 class TagDropper(HTMLParser):
 	def __init__(self, tags_to_drop, *args, **kwargs):
 		HTMLParser.__init__(self, *args, **kwargs)
 		self._text = []
-		self._tags_to_drop = set(tags_to_drop)
+		self._tags_to_drop = set(tags_to_drop) # List dari tag yang akan di drop
 
 	def clear_text(self):
 		self._text = []
